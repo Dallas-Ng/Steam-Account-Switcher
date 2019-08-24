@@ -1,5 +1,5 @@
 # Steam Account Switcher
-Steam Account Switcher is a Windows Application that helps switch accounts seamlessly
+Steam Account Switcher is a windows application that helps switch steam accounts seamlessly
 
 
 ##  Releases

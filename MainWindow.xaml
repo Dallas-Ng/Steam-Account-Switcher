@@ -1,0 +1,53 @@
+﻿<Window x:Class="SteamAccountSwitcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SteamAccountSwitcher"
+        mc:Ignorable="d"
+        Title="Steam Account Switcher" 
+        Height="400" 
+        Width="250"
+        ResizeMode="NoResize"
+        Closing="Window_Closing"
+        Icon="/Resources/steam.ico" 
+        UseLayoutRounding="True"
+        >
+    <StackPanel>
+        <Border Margin="5">
+            <ListView x:Name="li_Accounts" Height="300" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="li_Accounts_MouseDoubleClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Grid.IsSharedSizeScope="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="185"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <TextBlock x:Name="tb_Username" Grid.Column="0" Height="20" Text="{Binding Username}"/>
+                            <Image Grid.Column="1" Width="15" Height="15" Source="/Resources/remove.png"/>
+                            <Button x:Name="btn_Remove" Grid.Column="1" Width="15" Height="15" Click="btn_Remove_Click">X
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="/Resources/remove.png"/>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
+
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btn_Add" Click="btn_Add_Click" Margin="2" Grid.Column="0" Content="Add" />
+            <Button x:Name="btn_Edit" Click="btn_Edit_Click" Margin="2" Grid.Column="1" Content="Edit" />
+        </Grid>
+        <TextBlock x:Name="Test"/>
+    </StackPanel>
+</Window>

@@ -34,7 +34,7 @@ namespace SteamAccountSwitcher
             accountList = new AccountList();
 
 
-            //Properties.Settings.Default.Reset();
+            //Properties.Settings.Default.Reset(); // Uncomment this to clear accounts
 
             try
             {
@@ -43,10 +43,7 @@ namespace SteamAccountSwitcher
             }
             catch
             {
-                /* This happens when either
-                 * 1) The list is empty and the hashing conversion fails
-                 * 2) List does not exist
-                */
+
             }
 
             li_Accounts.ItemsSource = accountList.Accounts;

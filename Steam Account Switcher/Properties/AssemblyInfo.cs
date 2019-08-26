@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("SteamAccountSwitcher")]
 [assembly: AssemblyDescription("A steam account switcher")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Dallas")]
 [assembly: AssemblyProduct("SteamAccountSwitcher")]
 [assembly: AssemblyCopyright("Copyright © Dallas 2019")]
 [assembly: AssemblyTrademark("")]

@@ -11,19 +11,17 @@ namespace SteamAccountSwitcher.Models
 {
     class Steam
     {
-        string installDir = @"C:\Program Files (x86)\Steam\Steam.exe";
+        public string installDir = Properties.Settings.Default.SteamDirectory;
 
         public Steam(string installDir)
         {
             this.installDir = installDir;
         }
-
-        public string InstallDir = "";
         
         public bool IsSteamRunning()
         {
-            Process[] pname = Process.GetProcessesByName("steam");
-            if (pname.Length == 0)
+            Process[] processName = Process.GetProcessesByName("steam");
+            if (processName.Length == 0)
                 return false;
             else
                 return true;
@@ -31,11 +29,13 @@ namespace SteamAccountSwitcher.Models
 
         public void KillSteam()
         {
-            Process [] proc = Process.GetProcessesByName("steam");
-	        proc[0].Kill();
+            foreach (var process in Process.GetProcessesByName("steam"))
+            {
+                process.Kill();
+            }
         }
 
-        public bool StartSteamAccount(SteamAccount a)
+        public bool StartSteamAccount(SteamAccount account)
         {
             bool finished = false;
 
@@ -51,7 +51,7 @@ namespace SteamAccountSwitcher.Models
                     Process p = new Process();
                     if (File.Exists(installDir))
                     {
-                        p.StartInfo = new ProcessStartInfo(installDir, a.getStartParameters());
+                        p.StartInfo = new ProcessStartInfo(installDir, account.getStartParameters());
                         p.Start();
                         finished = true;
                         return true;
@@ -64,11 +64,11 @@ namespace SteamAccountSwitcher.Models
 
         public bool LogoutSteam()
         {
-            Process p = new Process();
+            Process process = new Process();
             if (File.Exists(installDir))
             {
-                p.StartInfo = new ProcessStartInfo(installDir, "-shutdown");
-                p.Start();
+                process.StartInfo = new ProcessStartInfo(installDir, "-shutdown");
+                process.Start();
                 return true;
             }
             return false;

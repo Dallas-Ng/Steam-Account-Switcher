@@ -50,7 +50,7 @@ namespace SteamAccountSwitcher
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            if (btn_File.Content.ToString() == "Select Steam")
+            if (Properties.Settings.Default.SteamDirectory.ToString() == "Select Steam Directory")
             {
                 requiredValidator.Visibility = Visibility.Visible;
             }

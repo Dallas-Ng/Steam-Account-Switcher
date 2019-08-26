@@ -25,7 +25,7 @@ namespace SteamAccountSwitcher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Select Steam")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Select Steam Directory")]
         public string SteamDirectory {
             get {
                 return ((string)(this["SteamDirectory"]));

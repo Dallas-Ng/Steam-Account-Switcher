@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="SteamDirectory" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Select Steam</Value>
+      <Value Profile="(Default)">Select Steam Directory</Value>
     </Setting>
     <Setting Name="EncryptionKey" Type="System.String" Scope="User">
       <Value Profile="(Default)">Default</Value>

@@ -6,17 +6,31 @@
         xmlns:local="clr-namespace:SteamAccountSwitcher"
         mc:Ignorable="d"
         Title="Settings"        
-        Height="250" 
-        Width="250"
+        Height="300" 
+        Width="300"
         ResizeMode="NoResize"
+        Icon="steam.ico" 
         WindowStartupLocation="CenterOwner"
         >
-    <StackPanel Margin="5">
-        <TextBlock Text="Steam Directory"/>
-        <Button x:Name="btn_File" Click="btn_File_Click" Content="Select Steam"/>
-        <TextBlock x:Name="requiredValidator" Visibility="Collapsed" Foreground="Red" HorizontalAlignment="Center" Text="Please select a steam directory"/>
-        
-        <Button x:Name="btn_Save" Click="btn_Save_Click" Margin="0 30 0 0" Content="Save Settings"/>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Green.xaml" />
+                <ResourceDictionary Source="Resources/Scrollbar.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <StackPanel Margin="10">
+        <TextBlock Text="Steam Directory" Margin="0 5"/>
+        <Button x:Name="btn_File" Click="btn_File_Click" Content="Select Steam Directory"/>
+        <TextBlock x:Name="requiredValidator" Visibility="Collapsed" Foreground="Red" HorizontalAlignment="Center" FontSize="12" Text="Please select steam.exe"/>
+
+        <Button x:Name="btn_Save" Click="btn_Save_Click" Margin="0 120 0 0" Content="Save Settings" Style="{DynamicResource MaterialDesignRaisedAccentButton}"/>
 
     </StackPanel>
 </Window>

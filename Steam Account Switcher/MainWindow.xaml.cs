@@ -34,7 +34,7 @@ namespace SteamAccountSwitcher
             accountList = new AccountList();
 
 
-            Properties.Settings.Default.Reset();
+            //Properties.Settings.Default.Reset();
 
             try
             {
@@ -80,7 +80,7 @@ namespace SteamAccountSwitcher
 
         private void li_Accounts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (Properties.Settings.Default.SteamDirectory == "Select Steam")
+            if (Properties.Settings.Default.SteamDirectory == "Select Steam Directory")
             {
                 Settings newSettingsWindow = new Settings();
                 newSettingsWindow.Owner = this;

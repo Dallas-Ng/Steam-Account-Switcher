@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:SteamAccountSwitcher"
         mc:Ignorable="d"
         Title="Steam Account Switcher" 
@@ -10,30 +11,53 @@
         Width="350"
         ResizeMode="NoResize"
         Closing="Window_Closing"
-        Icon="/Resources/steam.ico" 
+        Icon="steam.ico" 
         UseLayoutRounding="True"
         >
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Amber.xaml" />
+                <ResourceDictionary Source="Resources/Scrollbar.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <StackPanel>
         <Border Margin="5">
             <ListView x:Name="li_Accounts" Height="300" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="li_Accounts_MouseDoubleClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Grid.IsSharedSizeScope="True">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="285"/>
-                                <ColumnDefinition Width="30"/>
-                            </Grid.ColumnDefinitions>
+                        <materialDesign:TransitioningContent OpeningEffectsOffset="{materialDesign:IndexedItemOffsetMultiplierExtension 0:0:0.1}"
+                                                                 Opacity="0"
+                                                                 RunHint="Loaded">
+                            <materialDesign:TransitioningContent.OpeningEffects>
+                                <materialDesign:TransitionEffect Kind="SlideInFromLeft" />
+                                <materialDesign:TransitionEffect Kind="FadeIn" />
+                            </materialDesign:TransitioningContent.OpeningEffects>
+                            <DockPanel>
+                                <Grid Grid.IsSharedSizeScope="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="285"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
 
 
-                            <TextBlock x:Name="tb_Username" Grid.Column="0" HorizontalAlignment="Stretch" Height="20" Text="{Binding Name}"/>
-                            <Button x:Name="btn_Remove" Grid.Column="1" Width="15" Height="15" Click="btn_Remove_Click">X
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Image Source="/Resources/remove.png"/>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                        </Grid>
+                                    <TextBlock x:Name="tb_Username" Grid.Column="0" HorizontalAlignment="Stretch" FontSize="16" Height="30" VerticalAlignment="Center" Text="{Binding Name}"/>
+                                    <Button x:Name="btn_Remove" Grid.Column="1" Width="25" Height="25" Click="btn_Remove_Click">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <materialDesign:PackIcon Kind="CloseCircleOutline" FontSize="25" Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </Grid>
+                            </DockPanel>
+                        </materialDesign:TransitioningContent>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -47,7 +71,7 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="btn_Add" Click="btn_Add_Click" Margin="2" Grid.Column="0" Content="Add" />
             <Button x:Name="btn_Edit" Click="btn_Edit_Click" Margin="2" Grid.Column="1" Content="Edit" />
-            <Button x:Name="btn_Settings" Click="btn_Settings_Click" Margin="2" Grid.Column="2" Content="Settings" />
+            <Button x:Name="btn_Settings" Click="btn_Settings_Click" Margin="2" Grid.Column="2" Content="Settings" Style="{DynamicResource MaterialDesignRaisedAccentButton}" />
         </Grid>
         <TextBlock x:Name="Test"/>
     </StackPanel>

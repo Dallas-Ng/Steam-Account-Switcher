@@ -28,7 +28,7 @@
     <SupportUrl>https://dallas-ng.github.io/</SupportUrl>
     <ProductName>Steam Account Switcher</ProductName>
     <PublisherName>Dallas Ng</PublisherName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

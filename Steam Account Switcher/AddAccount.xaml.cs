@@ -42,6 +42,7 @@ namespace SteamAccountSwitcher
             tb_Password.Password = editAccount.Password;
 
             btn_Add.Content = "Edit";
+            Title = "Edit Acount";
 
         }
 

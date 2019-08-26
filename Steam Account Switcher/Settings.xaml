@@ -1,0 +1,22 @@
+﻿<Window x:Class="SteamAccountSwitcher.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SteamAccountSwitcher"
+        mc:Ignorable="d"
+        Title="Settings"        
+        Height="250" 
+        Width="250"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        >
+    <StackPanel Margin="5">
+        <TextBlock Text="Steam Directory"/>
+        <Button x:Name="btn_File" Click="btn_File_Click" Content="Select Steam"/>
+        <TextBlock x:Name="requiredValidator" Visibility="Collapsed" Foreground="Red" HorizontalAlignment="Center" Text="Please select a steam directory"/>
+        
+        <Button x:Name="btn_Save" Click="btn_Save_Click" Margin="0 30 0 0" Content="Save Settings"/>
+
+    </StackPanel>
+</Window>

@@ -34,7 +34,7 @@ namespace SteamAccountSwitcher
             accountList = new AccountList();
 
 
-            Properties.Settings.Default.Reset();
+            //Properties.Settings.Default.Reset();
 
             try
             {
@@ -157,6 +157,5 @@ namespace SteamAccountSwitcher
             WriteAccounts();
             Properties.Settings.Default.Save();
         }
-
     }
 }

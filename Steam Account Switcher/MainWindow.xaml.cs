@@ -33,8 +33,12 @@ namespace SteamAccountSwitcher
             InitializeComponent();
             accountList = new AccountList();
 
+
+            Properties.Settings.Default.Reset();
+
             try
             {
+                Hash.CheckEncryptionKey();
                 GetAccounts();
             }
             catch
@@ -55,7 +59,7 @@ namespace SteamAccountSwitcher
             try
             {
                 string text = File.ReadAllText(Path);
-                accountList = Serialize.FromXML<AccountList>(Hash.Decrypt(text, "key"));
+                accountList = Serialize.FromXML<AccountList>(Hash.Decrypt(text, Properties.Settings.Default.EncryptionKey));
             }
             catch (Exception ex)
             {
@@ -68,7 +72,7 @@ namespace SteamAccountSwitcher
         {
             string xmlAccounts = Serialize.ToXML<AccountList>(accountList);
             StreamWriter file = new StreamWriter(Path);
-            file.Write(Hash.Encrypt(xmlAccounts, "key"));
+            file.Write(Hash.Encrypt(xmlAccounts, Properties.Settings.Default.EncryptionKey));
             file.Close();
 
         }
@@ -76,7 +80,14 @@ namespace SteamAccountSwitcher
 
         private void li_Accounts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            steam = new Steam(@"C:\Program Files (x86)\Steam\Steam.exe");
+            if (Properties.Settings.Default.SteamDirectory == "Select Steam")
+            {
+                Settings newSettingsWindow = new Settings();
+                newSettingsWindow.Owner = this;
+                newSettingsWindow.requiredValidator.Visibility = Visibility.Visible;
+                newSettingsWindow.ShowDialog();
+            }
+            steam = new Steam(Properties.Settings.Default.SteamDirectory);
             SteamAccount selectedAcc = (SteamAccount)li_Accounts.SelectedItem;
             steam.StartSteamAccount(selectedAcc);
         }
@@ -84,13 +95,13 @@ namespace SteamAccountSwitcher
 
         private void btn_Add_Click(object sender, RoutedEventArgs e)
         {
-            AddAccount newWindow = new AddAccount();
-            newWindow.Owner = this;
-            newWindow.ShowDialog();
+            AddAccount newAccWindow = new AddAccount();
+            newAccWindow.Owner = this;
+            newAccWindow.ShowDialog();
 
-            if (newWindow.Account != null)
+            if (newAccWindow.Account != null)
             {
-                accountList.Accounts.Add(newWindow.Account);
+                accountList.Accounts.Add(newAccWindow.Account);
                 li_Accounts.Items.Refresh();
             }
         }
@@ -111,6 +122,14 @@ namespace SteamAccountSwitcher
                     li_Accounts.Items.Refresh();
                 }
             }
+        }
+
+
+        private void btn_Settings_Click(object sender, RoutedEventArgs e)
+        {
+            Settings newSettingsWindow = new Settings();
+            newSettingsWindow.Owner = this;
+            newSettingsWindow.ShowDialog();
         }
 
 
@@ -136,6 +155,8 @@ namespace SteamAccountSwitcher
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             WriteAccounts();
+            Properties.Settings.Default.Save();
         }
+
     }
 }

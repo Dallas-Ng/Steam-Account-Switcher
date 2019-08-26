@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace SteamAccountSwitcher.Models
 {
-    public class Serialize
+    class Serialize
     {
         public static T FromXML<T>(string xml)
         {

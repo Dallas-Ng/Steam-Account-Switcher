@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Steam Account Switcher" 
         Height="400" 
-        Width="250"
+        Width="350"
         ResizeMode="NoResize"
         Closing="Window_Closing"
         Icon="/Resources/steam.ico" 
@@ -20,13 +20,12 @@
                     <DataTemplate>
                         <Grid Grid.IsSharedSizeScope="True">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="185"/>
+                                <ColumnDefinition Width="285"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
 
 
-                            <TextBlock x:Name="tb_Username" Grid.Column="0" Height="20" Text="{Binding Username}"/>
-                            <Image Grid.Column="1" Width="15" Height="15" Source="/Resources/remove.png"/>
+                            <TextBlock x:Name="tb_Username" Grid.Column="0" HorizontalAlignment="Stretch" Height="20" Text="{Binding Name}"/>
                             <Button x:Name="btn_Remove" Grid.Column="1" Width="15" Height="15" Click="btn_Remove_Click">X
                                 <Button.Template>
                                     <ControlTemplate>
@@ -44,9 +43,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Button x:Name="btn_Add" Click="btn_Add_Click" Margin="2" Grid.Column="0" Content="Add" />
             <Button x:Name="btn_Edit" Click="btn_Edit_Click" Margin="2" Grid.Column="1" Content="Edit" />
+            <Button x:Name="btn_Settings" Click="btn_Settings_Click" Margin="2" Grid.Column="2" Content="Settings" />
         </Grid>
         <TextBlock x:Name="Test"/>
     </StackPanel>

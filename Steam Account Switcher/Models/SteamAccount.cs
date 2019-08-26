@@ -9,8 +9,13 @@ namespace SteamAccountSwitcher.Models
     [Serializable]
     public class SteamAccount
     {
-        string _username, _password;
+        string _name, _username, _password;
 
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
         public string Username
         {
             get { return _username; }
@@ -18,12 +23,13 @@ namespace SteamAccountSwitcher.Models
         }
         public string Password
         {
-            get { return _password; }
-            set { _password = value; }
+            get { return Hash.Encrypt(_password, Properties.Settings.Default.EncryptionKey); }
+            set { _password = Hash.Decrypt(value, Properties.Settings.Default.EncryptionKey); }
         }
 
-        public SteamAccount(string pUsername, string pPassword)
+        public SteamAccount(string Name, string pUsername, string pPassword)
         {
+            _name = Name;
             _username = pUsername;
             _password = pPassword;
         }

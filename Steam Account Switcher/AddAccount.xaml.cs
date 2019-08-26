@@ -37,6 +37,7 @@ namespace SteamAccountSwitcher
             InitializeComponent();
             account = editAccount;
 
+            tb_Name.Text = editAccount.Name;
             tb_Username.Text = editAccount.Username;
             tb_Password.Password = editAccount.Password;
 
@@ -46,7 +47,7 @@ namespace SteamAccountSwitcher
         {
             try
             {
-                account = new SteamAccount(tb_Username.Text, tb_Password.Password);
+                account = new SteamAccount(tb_Name.Text, tb_Username.Text, tb_Password.Password);
             }
             catch
             {

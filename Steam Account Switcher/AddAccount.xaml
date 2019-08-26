@@ -5,15 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SteamAccountSwitcher"
         mc:Ignorable="d"
-        Title="AddAccount" 
-        Height="180" 
-        Width="200"
+        Title="Add an Account" 
+        Height="250" 
+        Width="250"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Closing="Window_Closing">
 
     <StackPanel Margin="5">
 
+        <TextBlock Text="Name"/>
+        <TextBox x:Name="tb_Name" Margin="0 5"/>
+        
         <TextBlock Text="Username"/>
         <TextBox x:Name="tb_Username" Margin="0 5"/>
 

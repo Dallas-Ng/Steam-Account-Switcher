@@ -33,7 +33,7 @@ namespace SteamAccountSwitcher.Models
 
         public static void CheckEncryptionKey()
         {
-            if (Properties.Settings.Default.EncryptionKey == "Default" || Properties.Settings.Default.EncryptionKey == null)
+            if (Properties.Settings.Default.EncryptionKey == "Default")
             {
                 Properties.Settings.Default.EncryptionKey = GetUniqueKey(10);
             }

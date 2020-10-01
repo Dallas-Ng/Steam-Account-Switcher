@@ -11,8 +11,6 @@ This application allows you to log in with 1 click only needing you to enter a s
 
 [Latest Release](https://github.com/Dallas-Ng/Steam-Account-Switcher/releases/tag/v2.0)
 
-[Version 1.0](https://github.com/Dallas-Ng/Steam-Account-Switcher/releases/tag/v1.0)
-
 
 ## Screenshots
 
